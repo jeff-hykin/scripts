@@ -4,7 +4,7 @@ function psub  {
 
 if [[ "$OSTYPE" == "linux-gnu" ]] 
 then
-    if [[ -d /etc/debian_version ]] 
+    if [[ -f /etc/debian_version ]] 
     then
         sudo apt-get update
         sudo apt-get install -y openssh-server net-tools pcregrep perl
@@ -20,5 +20,11 @@ then
         ifconfig | pcregrep '192.[\d\.]+' | psub 'netmask.+' ''
         echo "Your public IP address should be:"
         curl ifconfig.co
+    else
+        echo "Sorry the only linux supported at the moment is debian"
+        return 1
     fi
+else
+    echo "Sorry your OS isn't supported yet"
+    return 1
 fi

@@ -1,3 +1,6 @@
+setopt interactivecomments 
+# ^ for zsh, must be first command to allow comments
+
 # 
 # Config
 # 
